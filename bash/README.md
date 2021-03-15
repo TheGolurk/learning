@@ -1,3 +1,7 @@
+# Learning bash
+
+[Bash-HOW-TO](https://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-1.html)
+
 ```
 # stdout 2 file
 ls -l > ls-l.txt
@@ -12,7 +16,7 @@ grep da * 1>&2
 grep * 2>&1
 
 # stderr and stdout 2 file
-#  This will place every output of a program to a file. This is suitable sometimes for cron entries, if you want a command to pass in absolute silence.
+# This will place every output of a program to a file. This is suitable sometimes for cron entries, if you want a command to pass in absolute silence.
 rm -f $(find / -name core) &> /dev/null
 ```
 
