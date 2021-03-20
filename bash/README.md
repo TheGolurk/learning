@@ -32,7 +32,7 @@ ls -l | grep "\.txt$"
 
 # Useful Commands #
 
-## sed ##
+## sed (stream editor) ##
 Sed is a non-interactive editor. Instead of altering a file by moving the cursor on the screen, you use a script of editing instructions to sed, 
 plus the name of the file to edit. You can also describe sed as a filter. Let's have a look at some examples:
 
@@ -42,3 +42,17 @@ plus the name of the file to edit. You can also describe sed as a filter. Let's 
 
  Sed replaces the string 'to_be_replaced' with the string 'replaced' and reads from the /tmp/dummy file. The result will be sent to stdout (normally the console)
  but you can also add '> capture' to the end of the line above so that sed sends the output to the file 'capture'.
+
+ ```
+         $sed 12, 18d /tmp/dummy
+```
+
+## awk (manipulation of datafiles, text retrieval and processing) ##
+Many implementations of the AWK programming language exist (most known interpreters are GNU's gawk and 'new awk' mawk.) The principle is simple: 
+AWK scans for a pattern, and for every matching pattern a action will be performed. 
+
+```
+        $awk '/test/ {print}' /tmp/dummy
+```
+
+
