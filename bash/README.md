@@ -67,3 +67,9 @@ The string "look for this" has been found n times in the file /var/log/messages.
 		$wc --words --lines --bytes /tmp/dummy
 ```
 
+## sort (sort lines of text files) ##
+```
+        $sort /tmp/dummy
+```
+
+
