@@ -55,4 +55,15 @@ AWK scans for a pattern, and for every matching pattern a action will be perform
         $awk '/test/ {print}' /tmp/dummy
 ```
 
+## grep (print lines matching a search pattern) ##
+
+```
+		$grep "look for this" /var/log/messages -c
+```
+The string "look for this" has been found n times in the file /var/log/messages. 
+
+## wc (counts lines, words and bytes) ##
+```
+		$wc --words --lines --bytes /tmp/dummy
+```
 
