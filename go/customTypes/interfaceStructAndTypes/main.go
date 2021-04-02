@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/TheGolurk/pluralsight/customTypes/interfacesStructs/organization"
+	"github.com/TheGolurk/customTypes/organization"
 )
 
 func main() {
@@ -14,6 +14,7 @@ func main() {
 	}*/
 	p := organization.NewPerson("a", "b")
 	err := p.SetTwitterHanlder("@golurk ")
+	fmt.Printf("%T\n", organization.TwitterHandler("test"))
 	if err != nil {
 		fmt.Printf("Error %s", err.Error())
 	}
