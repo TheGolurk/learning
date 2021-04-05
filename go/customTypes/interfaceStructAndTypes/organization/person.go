@@ -11,33 +11,42 @@ type Handler struct {
 	name   string
 }
 
-func (h Handler) randomFunc() {}
-
-type TwitterHandler = Handler
+type TwitterHandler string
 
 func (th TwitterHandler) RedirectURL() string {
-	return ""
+	cleanHandler := strings.TrimPrefix(string(th), "@")
+	return fmt.Sprintf("https://www.twtter.com/%s", cleanHandler)
 }
 
 type Identifiable interface {
 	ID() string
 }
 
+type Name struct {
+	first string
+	last  string
+}
+
+func (n Name) FullName() string {
+	return fmt.Sprintf("%s %s", n.first, n.last)
+}
+
+type Employee struct {
+	Name
+}
+
 type Person struct {
-	firstName      string
-	lastName       string
+	Name
 	twitterHanlder TwitterHandler
 }
 
 func NewPerson(fname, lname string) Person {
 	return Person{
-		firstName: fname,
-		lastName:  lname,
+		Name: Name{
+			first: fname,
+			last:  lname,
+		},
 	}
-}
-
-func (p Person) FullName() string {
-	return fmt.Sprintf("%s %s", p.firstName, p.lastName)
 }
 
 func (p Person) ID() string {

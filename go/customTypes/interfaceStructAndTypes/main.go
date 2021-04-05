@@ -19,6 +19,7 @@ func main() {
 		fmt.Printf("Error %s", err.Error())
 	}
 	fmt.Println(p.TwitterHandler())
+	fmt.Println(p.TwitterHandler().RedirectURL())
 	fmt.Println(p.ID())
 	fmt.Println(p.FullName())
 }
