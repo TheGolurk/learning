@@ -22,6 +22,16 @@ type Identifiable interface {
 	ID() string
 }
 
+type socialSecurityNumber string
+
+func NewSocialSecurityNumber(value string) Identifiable {
+	return socialSecurityNumber(value)
+}
+
+func (ssn socialSecurityNumber) ID() string {
+	return string(ssn)
+}
+
 type Name struct {
 	first string
 	last  string
@@ -38,19 +48,21 @@ type Employee struct {
 type Person struct {
 	Name
 	twitterHanlder TwitterHandler
+	identifiable   Identifiable
 }
 
-func NewPerson(fname, lname string) Person {
+func NewPerson(fname, lname string, identifiable Identifiable) Person {
 	return Person{
 		Name: Name{
 			first: fname,
 			last:  lname,
 		},
+		identifiable: identifiable,
 	}
 }
 
-func (p Person) ID() string {
-	return "12345"
+func (p *Person) ID() string {
+	return p.identifiable.ID()
 }
 
 func (p *Person) SetTwitterHanlder(handler TwitterHandler) error {
