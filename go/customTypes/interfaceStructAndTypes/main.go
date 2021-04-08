@@ -18,9 +18,35 @@ func main() {
 	if err != nil {
 		fmt.Printf("Error %s", err.Error())
 	}
-	fmt.Println(p.TwitterHandler())
-	fmt.Println(p.TwitterHandler().RedirectURL())
-	fmt.Println(p.ID())
-	fmt.Println(p.Country())
-	fmt.Println(p.FullName())
+
+	name1 := Name{First: "james", Last: "Wilson"}
+	name2 := Name{First: "james", Last: "Wilson"}
+	if name1 == name2 {
+		println("we match")
+	}
+
+	ssn := organization.NewSocialSecurityNumber("123-12-123")
+	eu := organization.NewEuropeanUnionIdentifier("12345", "Mexico")
+	eu2 := organization.NewEuropeanUnionIdentifier("12345", "Mexico")
+
+	if eu2 == eu {
+		println("we match")
+	}
+
+	fmt.Printf("%T %T\n", ssn, eu)
+
+	name3 := Name{First: "", Last: ""}
+	if name3 == (Name{}) {
+		println("match nil name")
+	}
+}
+
+type Name struct {
+	First string
+	Last  string
+}
+
+type OtherName struct {
+	First string
+	Last  string
 }
