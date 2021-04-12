@@ -1,6 +1,9 @@
 package main
 
 import (
+	"fmt"
+	"math"
+
 	"github.com/TheGolurk/go-functions/simplemath"
 )
 
@@ -23,6 +26,20 @@ func main() {
 
 	addExpr := mathExpression(AddExpr)
 	println(addExpr(2, 3))
+
+	fmt.Printf("%f\n", double(3, 4, mathExpression(AddExpr)))
+
+	p2 := powerOfTwo()
+	value := p2()
+	println(value)
+}
+
+func powerOfTwo() func() int64 {
+	x := 1.0
+	return func() int64 {
+		x += 1
+		return int64(math.Pow(x, 2))
+	}
 }
 
 func mathExpression(expr MathExpr) func(float64, float64) float64 {
@@ -38,4 +55,8 @@ func mathExpression(expr MathExpr) func(float64, float64) float64 {
 			return 0
 		}
 	}
+}
+
+func double(f1, f2 float64, mathExpr func(float64, float64) float64) float64 {
+	return 2 * mathExpr(f1, f2)
 }
