@@ -1,7 +1,9 @@
 package main
 
 import (
+	"errors"
 	"fmt"
+	"io"
 	"math"
 
 	"github.com/TheGolurk/go-functions/simplemath"
@@ -32,6 +34,25 @@ func main() {
 	p2 := powerOfTwo()
 	value := p2()
 	println(value)
+
+	ReadSomething()
+}
+
+func ReadSomething() error {
+	var r io.Reader = BadReader{errors.New("mynosense reader")}
+	if _, err := r.Read([]byte("test")); err != nil {
+		fmt.Printf("an error ocurred %s \n", err)
+		return err
+	}
+	return nil
+}
+
+type BadReader struct {
+	err error
+}
+
+func (br BadReader) Read(p []byte) (n int, err error) {
+	return -1, br.err
 }
 
 func powerOfTwo() func() int64 {
