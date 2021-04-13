@@ -20,3 +20,15 @@ Parallelism: Make 3 task at the same time
 challenges with concurrency
 * Coordinanting tasks -> WaitGroups
 * Shared memory -> Mutexes
+
+## sync.WaitGroup
+A WaitGroup waits for a collection of goroutines to finish
+
+## Mutex
+A **mut**ual **ex**clusion lock
+
+## see race running go 
+```
+$ go run --race main.go
+```
+
