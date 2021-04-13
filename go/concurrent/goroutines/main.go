@@ -10,8 +10,8 @@ var cache = map[int]Book{}
 var rnd = rand.New(rand.NewSource(time.Now().UnixNano()))
 
 func main() {
-	for i := 0; i < 4; i++ {
-		id := rnd.Intn(4) + 1
+	for i := 0; i < 10; i++ {
+		id := rnd.Intn(10) + 1
 		go func(id int) {
 			if b, ok := queryCache(id); ok {
 				fmt.Println("from cache")

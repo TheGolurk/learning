@@ -41,4 +41,40 @@ var books = []Book{
 		Author:        "J.R.R4",
 		YearPublished: 1937,
 	},
+	{
+		ID:            5,
+		Title:         "The Hobbit5",
+		Author:        "J.R.R5",
+		YearPublished: 1937,
+	},
+	{
+		ID:            6,
+		Title:         "The Hobbit6",
+		Author:        "J.R.R6",
+		YearPublished: 1937,
+	},
+	{
+		ID:            7,
+		Title:         "The Hobbit7",
+		Author:        "J.R.R7",
+		YearPublished: 1937,
+	},
+	{
+		ID:            8,
+		Title:         "The Hobbit8",
+		Author:        "J.R.R8",
+		YearPublished: 1937,
+	},
+	{
+		ID:            9,
+		Title:         "The Hobbit9",
+		Author:        "J.R.R9",
+		YearPublished: 1937,
+	},
+	{
+		ID:            10,
+		Title:         "The Hobbit10",
+		Author:        "J.R.R10",
+		YearPublished: 1937,
+	},
 }
