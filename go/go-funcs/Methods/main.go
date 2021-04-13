@@ -36,6 +36,32 @@ func main() {
 	println(value)
 
 	ReadSomething()
+
+	if err := ReadFullFile(); err == io.EOF {
+		println("successfully read file")
+	} else if err != nil {
+		fmt.Printf("Something bad ocurred %s \n", err)
+	}
+}
+
+func ReadFullFile() error {
+	var r io.ReadCloser = &SimpleReader{}
+	defer func() {
+		_ = r.Close()
+	}()
+
+	for {
+		value, err := r.Read([]byte("text that does nothing"))
+		if err == io.EOF {
+			break
+		} else if err != nil {
+			return err
+		}
+
+		println(value)
+
+	}
+	return nil
 }
 
 func ReadSomething() error {
@@ -53,6 +79,23 @@ type BadReader struct {
 
 func (br BadReader) Read(p []byte) (n int, err error) {
 	return -1, br.err
+}
+
+type SimpleReader struct {
+	count int
+}
+
+func (br *SimpleReader) Read(p []byte) (n int, err error) {
+	if br.count > 3 {
+		return 0, io.EOF //errors.New("bad robot") //io.EOF
+	}
+	br.count += 1
+	return br.count, nil
+}
+
+func (br *SimpleReader) Close() error {
+	println("closing reader")
+	return nil
 }
 
 func powerOfTwo() func() int64 {
