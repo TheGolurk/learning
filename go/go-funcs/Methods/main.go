@@ -44,18 +44,25 @@ func main() {
 	}
 }
 
-func ReadFullFile() error {
+func ReadFullFile() (err error) {
 	var r io.ReadCloser = &SimpleReader{}
 	defer func() {
 		_ = r.Close()
+		if p := recover(); p == errCatastrophicReader {
+			println(p)
+			err = errors.New("a panic ocurred but it is ok")
+		} else if p != nil {
+			panic("an unexpected error ocurred and we do not want to recover")
+		}
 	}()
 
 	for {
-		value, err := r.Read([]byte("text that does nothing"))
-		if err == io.EOF {
+		value, readerErr := r.Read([]byte("text that does nothing"))
+		if readerErr == io.EOF {
 			break
-		} else if err != nil {
-			return err
+		} else if readerErr != nil {
+			err = readerErr
+			return
 		}
 
 		println(value)
@@ -85,7 +92,12 @@ type SimpleReader struct {
 	count int
 }
 
+var errCatastrophicReader = errors.New("something catastrophic occurre in the reader")
+
 func (br *SimpleReader) Read(p []byte) (n int, err error) {
+	if br.count == 2 {
+		panic(errCatastrophicReader)
+	}
 	if br.count > 3 {
 		return 0, io.EOF //errors.New("bad robot") //io.EOF
 	}
@@ -115,9 +127,7 @@ func mathExpression(expr MathExpr) func(float64, float64) float64 {
 	case MultiplyExpr:
 		return simplemath.Multiply
 	default:
-		return func(f1, f2 float64) float64 {
-			return 0
-		}
+		panic("an invalid math expression was used")
 	}
 }
 
