@@ -18,8 +18,8 @@ Parallelism: Make 3 task at the same time
 |Managed by OS|Managed by Go runtime|
 
 challenges with concurrency
-* Coordinanting tasks -> WaitGroups
-* Shared memory -> Mutexes
+* Coordinanting tasks -> WaitGroups -> chanels
+* Shared memory -> Mutexes -> chanels
 
 ## sync.WaitGroup
 A WaitGroup waits for a collection of goroutines to finish
@@ -32,3 +32,21 @@ A **mut**ual **ex**clusion lock
 $ go run --race main.go
 ```
 
+## Mutexes
+* Mutex: Ensures only one task can access
+* RWMutex: Multiple Readers access protected code but only one task can write 
+
+
+## Chanels
+> "Don't communicate by sharing memory, share memory by communicating" **-Rob Pike**
+
+Creating Chanels
+```go
+// create a channel
+ch := make(chan int)
+
+// create a buffered channel
+ch := make(chan int, 5)
+
+
+```
