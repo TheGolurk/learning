@@ -75,3 +75,9 @@ func myFunc(ch <-chan int) {...} // receive-only channel
 	* if buffered, all buffered messages available
 	* if unbuffered, or buffer empty, receive zero-value
 * Use comma okay syntax to check
+
+
+## Control flow
+* If statements
+* For loops
+* Select statements
