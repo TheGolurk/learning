@@ -50,3 +50,28 @@ ch := make(chan int, 5)
 
 
 ```
+
+
+## Channel Types
+* Bidirectional
+* Send-only
+* Receive-only
+
+```go
+ch := make(chan int) // created channels are always bidirectional
+func myFunc(ch chan int) {...} // Bidirectional channel
+
+func myFunc(ch chan<- int) {...} // send-only channel
+
+func myFunc(ch <-chan int) {...} // receive-only channel
+```
+
+
+## Closing channels
+* Closed via the built-in close function (close)
+* Cannot check for closed channel!!
+* Sending new message triggers a panic
+* Receiving messages okay
+	* if buffered, all buffered messages available
+	* if unbuffered, or buffer empty, receive zero-value
+* Use comma okay syntax to check
