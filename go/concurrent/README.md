@@ -81,3 +81,19 @@ func myFunc(ch <-chan int) {...} // receive-only channel
 * If statements
 * For loops
 * Select statements
+
+
+## Select Statement
+```go
+ch1 := make(chan int)
+ch2 := make(chan string)
+
+select {
+	case i := <-ch1:
+		// ....
+	case ch2 <- "hello":
+		// ...
+	default:
+		// use default case for non-blocking select
+}
+```
