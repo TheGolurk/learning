@@ -2,10 +2,23 @@ package product
 
 import (
 	"encoding/json"
+	"fmt"
 	"net/http"
 	"strconv"
 	"strings"
+
+	"github.com/thegolurk/inventoryservice/cors"
 )
+
+const productsBasePath = "products"
+
+func SetUpRoutes(apiBasePath string) {
+	handleProducts := http.HandlerFunc(productsHandler)
+	handleProduct := http.HandlerFunc(productHandler)
+	http.Handle(fmt.Sprintf("%s/%s", apiBasePath, productsBasePath), cors.Middleware(handleProducts))
+	http.Handle(fmt.Sprintf("%s/%s/", apiBasePath, productsBasePath), cors.Middleware(handleProduct))
+
+}
 
 func productHandler(w http.ResponseWriter, r *http.Request) {
 	urlPathSegments := strings.Split(r.URL.Path, "products/")
@@ -14,7 +27,8 @@ func productHandler(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusNotFound)
 		return
 	}
-	product, listItemIndex := findProductByID(productID)
+
+	product := getProduct(productID)
 	if product == nil {
 		w.WriteHeader(http.StatusNotFound)
 		return
@@ -43,9 +57,15 @@ func productHandler(w http.ResponseWriter, r *http.Request) {
 			w.WriteHeader(http.StatusBadRequest)
 			return
 		}
-		product = &updated
-		productList[listItemIndex] = *product
+
+		addOrUpdateProduct(updated)
 		w.WriteHeader(http.StatusOK)
+		return
+
+	case http.MethodDelete:
+		removeProduct(productID)
+
+	case http.MethodOptions:
 		return
 
 	default:
@@ -87,5 +107,9 @@ func productsHandler(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusCreated)
 		return
 
+	case http.MethodOptions:
+		return
+	default:
+		w.WriteHeader(http.StatusMethodNotAllowed)
 	}
 }
