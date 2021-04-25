@@ -38,6 +38,7 @@ func init() {
 
 func productsHandler(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
+
 	case http.MethodGet:
 		productsJson, err := json.Marshal(productList)
 		if err != nil {
@@ -46,7 +47,34 @@ func productsHandler(w http.ResponseWriter, r *http.Request) {
 		}
 		w.Header().Set("Content-type", "application/json")
 		w.Write(productsJson)
+
+	case http.MethodPost:
+		var newProduct Product
+		err := json.NewDecoder(r.Body).Decode(&newProduct)
+		if err != nil {
+			w.WriteHeader(http.StatusBadRequest)
+			return
+		}
+		if newProduct.ProductID != 0 {
+			w.WriteHeader(http.StatusBadRequest)
+			return
+		}
+		newProduct.ProductID = getNextID()
+		productList = append(productList, newProduct)
+		w.WriteHeader(http.StatusCreated)
+		return
+
 	}
+}
+
+func getNextID() int {
+	highestID := -1
+	for _, product := range productList {
+		if highestID < product.ProductID {
+			highestID = product.ProductID
+		}
+	}
+	return highestID + 1
 }
 
 func main() {
