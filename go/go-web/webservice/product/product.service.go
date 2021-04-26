@@ -28,15 +28,20 @@ func productHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	product := getProduct(productID)
-	if product == nil {
-		w.WriteHeader(http.StatusNotFound)
-		return
-	}
-
 	switch r.Method {
 
 	case http.MethodGet:
+
+		product, err := getProduct(productID)
+		if err != nil {
+			w.WriteHeader(http.StatusInternalServerError)
+			return
+		}
+
+		if product == nil {
+			w.WriteHeader(http.StatusNotFound)
+			return
+		}
 		JSON, err := json.Marshal(product)
 		if err != nil {
 			w.WriteHeader(http.StatusInternalServerError)

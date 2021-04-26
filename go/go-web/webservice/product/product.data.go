@@ -1,6 +1,7 @@
 package product
 
 import (
+	"database/sql"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
@@ -49,14 +50,25 @@ func loadProductMap() (map[int]Product, error) {
 	return prodMap, nil
 }
 
-func getProduct(productID int) *Product {
-	productMap.RLock()
-	defer productMap.RUnlock()
-	if product, ok := productMap.m[productID]; ok {
-		return &product
-	}
+func getProduct(productID int) (*Product, error) {
+	row := database.DbConn.QueryRow(`SELECT * FROM nventorydb.products
+	WHERE productId = ?`, productID)
 
-	return nil
+	var product Product
+	err := row.Scan(&product.ProductID,
+		&product.Manufacturer,
+		&product.Sku,
+		&product.Upc,
+		&product.PricePerUnit,
+		&product.QuantityOnHand,
+		&product.ProductName)
+
+	if err == sql.ErrNoRows {
+		return nil, nil
+	} else if err != nil {
+		return nil, err
+	}
+	return &product, nil
 }
 
 func removeProduct(productID int) {
@@ -106,16 +118,24 @@ func getNextProductID() int {
 
 func addOrUpdateProduct(product Product) (int, error) {
 	addOrUpdateID := -1
+
 	if product.ProductID > 0 {
-		oldProduct := getProduct(product.ProductID)
+		oldProduct, err := getProduct(product.ProductID)
+		if err != nil {
+			return addOrUpdateID, err
+		}
+
 		if oldProduct == nil {
 			return 0, fmt.Errorf("product id %d doesnt exist", product.ProductID)
 		}
+
 		addOrUpdateID = product.ProductID
+
 	} else {
 		addOrUpdateID = getNextProductID()
 		product.ProductID = addOrUpdateID
 	}
+
 	productMap.Lock()
 	productMap.m[addOrUpdateID] = product
 	productMap.Unlock()
