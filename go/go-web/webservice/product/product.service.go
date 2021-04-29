@@ -3,6 +3,7 @@ package product
 import (
 	"encoding/json"
 	"fmt"
+	"log"
 	"net/http"
 	"strconv"
 	"strings"
@@ -54,16 +55,24 @@ func productHandler(w http.ResponseWriter, r *http.Request) {
 		var updated Product
 		err := json.NewDecoder(r.Body).Decode(&updated)
 		if err != nil {
+			log.Println("decode json", err)
 			w.WriteHeader(http.StatusBadRequest)
 			return
 		}
 
 		if updated.ProductID != productID {
+			log.Println("equals", err)
 			w.WriteHeader(http.StatusBadRequest)
 			return
 		}
 
-		addOrUpdateProduct(updated)
+		err = updateProduct(updated)
+		if err != nil {
+			log.Println("update", err)
+			w.WriteHeader(http.StatusBadRequest)
+			return
+		}
+
 		w.WriteHeader(http.StatusOK)
 		return
 
@@ -100,16 +109,19 @@ func productsHandler(w http.ResponseWriter, r *http.Request) {
 		var newProduct Product
 		err := json.NewDecoder(r.Body).Decode(&newProduct)
 		if err != nil {
+			log.Print("decode", err)
 			w.WriteHeader(http.StatusBadRequest)
 			return
 		}
 		if newProduct.ProductID != 0 {
+			log.Print("prod", err)
 			w.WriteHeader(http.StatusBadRequest)
 			return
 		}
 
-		_, err = addOrUpdateProduct(newProduct)
+		_, err = insertProduct(newProduct)
 		if err != nil {
+			log.Print("inser", err)
 			w.WriteHeader(http.StatusInternalServerError)
 			return
 		}
