@@ -12,3 +12,17 @@ sudo podman exec -it 29555a1693dc011ff39a433d8bdf4bfc2f926fba329d410ef7f71e866fe
 DNS CUSTOM
 /etc/hosts
 ej: 192.168.1.5 mysite.com
+
+
+net status
+sudo iftop -i eth0
+
+dh -ht ext4
+
+journalctl --since "10 minutes ago"
+
+cat /var/log/syslog | grep sshd
+
+kill {PID}
+
+nice -19 yes > /dev/null &
