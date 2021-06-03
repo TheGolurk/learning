@@ -38,4 +38,5 @@ $ sudo mkdir /var/secret
 $ sudo groupadd secret-group
 $ sudo chown :secret-group /var/secret
 $ sudo usermod -a -G secret-group jane
+$ sudo chmod g+w /var/secret/
 ```
