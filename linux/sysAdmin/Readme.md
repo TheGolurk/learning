@@ -27,6 +27,7 @@ $ sudo useradd -m jane
 
 # password for jane user
 $ sudo passwd jane
+> jane
 
 # skeleton files and directory
 $ ls -a /etc/ske
@@ -39,4 +40,12 @@ $ sudo groupadd secret-group
 $ sudo chown :secret-group /var/secret
 $ sudo usermod -a -G secret-group jane
 $ sudo chmod g+w /var/secret/
+
+# Extending Object Visibility
+$ sudo chmod +t .
+$ ls -dl
+$ mkdir /home/golurk/scripts/
+$ vim /home/golurk/scripts/myscript.sh
+$ sudo ln -s /home/golurk/scripts/myscript.sh /var/secret/
+
 ```
