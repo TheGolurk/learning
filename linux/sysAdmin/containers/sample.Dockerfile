@@ -1,4 +1,4 @@
-# Create a webserver on ubuntu
+# Create a webserver on ubuntu. It is a very cool getting started example
 
 FROM ubuntu:18.04
 
