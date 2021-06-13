@@ -7,3 +7,11 @@ Kernel -> Direct access to hardware
 	   -> etc...
 
  Shell: Outer layer that acts as an interface to kernel level services
+
+
+see father and child process
+```bash
+$ pstree
+```
+
+
