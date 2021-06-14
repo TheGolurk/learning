@@ -14,4 +14,10 @@ see father and child process
 $ pstree
 ```
 
+### Virtual Consoles
+Linux give us a number of virtual consoles to we can connect to
+
+In RHEL based systems we get 7 virtual consoles, and we can access with ALT + F1 to F7 
+and CTRL + ALT + F1 to F7 in GUI
+
 
