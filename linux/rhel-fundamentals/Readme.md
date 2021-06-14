@@ -20,4 +20,5 @@ Linux give us a number of virtual consoles to we can connect to
 In RHEL based systems we get 7 virtual consoles, and we can access with ALT + F1 to F7 
 and CTRL + ALT + F1 to F7 in GUI
 
-
+### Streams
+Shell has 3 standard streams, 1 for error, 1 for input, 1 for output
