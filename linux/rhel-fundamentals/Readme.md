@@ -22,3 +22,7 @@ and CTRL + ALT + F1 to F7 in GUI
 
 ### Streams
 Shell has 3 standard streams, 1 for error, 1 for input, 1 for output
+
+Shell -> standard out (stdout)
+	  -> standard in (stdin)
+	  -> standard error (stderr)
