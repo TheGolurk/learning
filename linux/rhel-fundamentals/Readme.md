@@ -77,4 +77,4 @@ $ echo "virus deployed" > /dev/pts/2
 
 |Stream |Description  | File Descriptor| Operator|
 |:--- | ---: | :---:| :---:|
-|Align left| Align right|center text| asd|
+|stdin| Shell standard input stream|0| <|
