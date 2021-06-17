@@ -35,3 +35,17 @@ $ echo 'Warning alert!!!!' > /tmp/alertfile
 $ cat /tmp/alertfile
 ```
 
+Eviting clobbering
+```bash
+$ set -o noclobber
+```
+
+```bash
+$ echo 'test!!' >| /tmp/lsout
+$ cat /tmp/lsout
+```
+
+Back to clobbering
+```bash
+$ set +o noclobber
+```
