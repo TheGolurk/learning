@@ -73,3 +73,9 @@ $ echo "virus deployed" > /dev/pts/2
 |-----|-------|------|
 |stdin|Shell standard input stream|0|i|
 |stdout|Shell standard output stream|1|>|
+
+
+|Header1 |Header2  | Header3|
+|:--- | ---: | :---:|
+|Align left| Align right|center text|
+|cell data1|cell data2|cell data3|
