@@ -71,5 +71,5 @@ $ echo "virus deployed" > /dev/pts/2
 ### STANDARD ERROR
 |Stream|Description|File descriptor|Operator|
 -----|-------|------|
-|stdin|Shell standard input stream|0|<|
+|stdin|Shell standard input stream|0|i|
 |stdout|Shell standard output stream|1|>|
