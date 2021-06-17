@@ -49,3 +49,10 @@ Back to clobbering
 ```bash
 $ set +o noclobber
 ```
+
+
+OR APPEND TO A FILE
+
+```bash
+$ echo 'hola' >> /tmp/alertfile
+```
