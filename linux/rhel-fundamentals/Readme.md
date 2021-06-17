@@ -61,6 +61,15 @@ $ echo 'hola' >> /tmp/alertfile
 ### REDIRECTION
 Everything in Unix/Linux is a file, for example sending out from stdout to /dev/pts/2 screen
 ```bash
+$ tty
+> /dev/pts/1
+# Sending output to the next screen
 $ ls -ls /etc/ > /dev/pts/2
+$ echo "virus deployed" > /dev/pts/2
 ```
 
+### STANDARD ERROR
+|Stream|Description|File descriptor|Operator|
+-----|-------|------|
+|stdin|Shell standard input stream|0|<|
+|stdout|Shell standard output stream|1|>|
