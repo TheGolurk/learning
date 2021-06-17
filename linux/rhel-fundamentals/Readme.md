@@ -75,7 +75,6 @@ $ echo "virus deployed" > /dev/pts/2
 |stdout|Shell standard output stream|1|>|
 
 
-|Header1 |Header2  | Header3|
-|:--- | ---: | :---:|
-|Align left| Align right|center text|
-|cell data1|cell data2|cell data3|
+|Stream |Description  | File Descriptor| Operator|
+|:--- | ---: | :---:| :---:|
+|Align left| Align right|center text| asd|
