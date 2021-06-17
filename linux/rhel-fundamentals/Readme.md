@@ -75,3 +75,35 @@ $ echo "virus deployed" > /dev/pts/2
 |stdin| Shell standard input stream|0| <|
 |stdout| Shell standard output stream|1| >|
 |stderr| Shell standard error stream|2| >|
+
+```bash
+#stdout
+$ ls -l 1> /tmp/file
+# > is shorthand for 1> and redirects stdout
+
+#stderr
+$ ls -l 2> /tmp/file
+```
+
+An example
+```bash
+$ ls -l /random/folder /home/golurk
+> ls: cannot access /random/folder: No such file or directory
+> /home/golurk/:
+> total 0
+> drwxr-xr-x. 2 golurk golurk 17 Jun 8 21:03 Desktop
+> ....
+
+# Redirecting the stderr to /tmp/stderr
+$ ls -l /random/folder /home/golurk 2> /tmp/stderr
+> /home/golurk/:
+> total 0
+> drwxr-xr-x. 2 golurk golurk 17 Jun 8 21:03 Desktop
+.....
+$ cat /tmp/stderr
+> ls: cannot access /random/folder: No such file or directory
+
+# Files of std allocated in
+$ ls -l /dev/std*
+```
+
