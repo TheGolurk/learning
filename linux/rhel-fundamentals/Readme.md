@@ -55,4 +55,12 @@ OR APPEND TO A FILE
 
 ```bash
 $ echo 'hola' >> /tmp/alertfile
+
 ```
+
+### REDIRECTION
+Everything in Unix/Linux is a file, for example sending out from stdout to /dev/pts/2 screen
+```bash
+$ ls -ls /etc/ > /dev/pts/2
+```
+
