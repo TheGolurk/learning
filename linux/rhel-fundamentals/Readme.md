@@ -69,12 +69,9 @@ $ echo "virus deployed" > /dev/pts/2
 ```
 
 ### STANDARD ERROR
-|Stream|Description|File descriptor|Operator|
-|-----|-------|------|
-|stdin|Shell standard input stream|0|i|
-|stdout|Shell standard output stream|1|>|
-
 
 |Stream |Description  | File Descriptor| Operator|
 |:--- | ---: | :---:| :---:|
 |stdin| Shell standard input stream|0| <|
+|stdout| Shell standard output stream|1| >|
+|stderr| Shell standard error stream|2| >|
