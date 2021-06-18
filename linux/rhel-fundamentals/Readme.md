@@ -107,3 +107,11 @@ $ cat /tmp/stderr
 $ ls -l /dev/std*
 ```
 
+
+### The shell environment
+
+```bash
+$ echo $BASH_VERSION
+$ echo $HOSTNAME
+$ echo $SHELL
+```
