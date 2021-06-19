@@ -114,4 +114,12 @@ $ ls -l /dev/std*
 $ echo $BASH_VERSION
 $ echo $HOSTNAME
 $ echo $SHELL
+
+# Define shell variables
+$ defcon=5
+$ echo $defcon
+
+$ defcon=1
+$ echo $defcon
+
 ```
