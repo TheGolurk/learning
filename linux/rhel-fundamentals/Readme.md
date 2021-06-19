@@ -129,4 +129,10 @@ $ echo defcon
 $ echo $defcon
 > 1
 # Shell performs something called expansion when we pres enter
+
+$ export defcon
+$ zsh
+$ echo $defcon
+> 1
+
 ```
