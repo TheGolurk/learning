@@ -135,4 +135,11 @@ $ zsh
 $ echo $defcon
 > 1
 
+# Customizing the shell prompt
+$ echo $PS1
+> \e[0 ..... For example
+
+$ man bash
+> /PROMPINTG
+# To see more about customizing
 ```
