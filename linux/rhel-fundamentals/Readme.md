@@ -122,4 +122,11 @@ $ echo $defcon
 $ defcon=1
 $ echo $defcon
 
+$ echo defcon
+> defcon 
+# string!!!
+
+$ echo $defcon
+> 1
+# Shell performs something called expansion when we pres enter
 ```
