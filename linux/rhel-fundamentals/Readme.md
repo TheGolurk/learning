@@ -142,4 +142,20 @@ $ echo $PS1
 $ man bash
 > /PROMPINTG
 # To see more about customizing
+
+# Customizing shell by the properly file (WARNING: Only if you have idea what are you script
+doing)
+# RHEL
+$ more /etc/profile
+$ ls -l /etc/profile.d
+$ mode ~/.bash_profile # better if want to customize 
 ```
+/etc/profile -> /etc/profile.d/ -> ~/.bash_profile -> ~/.bashrc -> /etc/bashrc
+
+
+|Global config (don't edit) |Personal config |
+|:--- | ---: |
+|/etc/profile| ~/.bash_profile |
+|/etc/profile.d|  ~/.bashrc |
+|/etc/bashrc| --- |
+
