@@ -159,3 +159,9 @@ $ mode ~/.bash_profile # better if want to customize
 |/etc/profile.d|  ~/.bashrc |
 |/etc/bashrc| --- |
 
+
+Shell Built-in: Code fot the command included in the shell
+* Faster and more efficient than an external program
+* Can manipulate the shell environment
+* Can bloat the shell
+
