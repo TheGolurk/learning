@@ -209,6 +209,13 @@ $ ping 8.8.8.8 > /tmp/pingfile &
 
 $ jobs
 > [1] Running pring 8.8.8.8 > /tmp/pingfile &
+
+$ last background job running
+$ fg
+>
+CTRL - Z
+$
+
 ```
 
 
