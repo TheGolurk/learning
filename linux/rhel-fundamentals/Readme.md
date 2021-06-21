@@ -165,3 +165,50 @@ Shell Built-in: Code fot the command included in the shell
 * Can manipulate the shell environment
 * Can bloat the shell
 
+```bash
+$ type vim
+> Vim is /usr/bin/vim
+$ type cd
+> cd is a shell builtin
+```
+
+				 /-> Shell -> Sleep -------> Shell ->
+Shell -> fork() /                             ^ 
+				\                             |
+				 \-> Command -> Running -> exit()
+
+### Pipeling
+
+```bash
+$ env
+> ..... A LOT OF STUFF
+$ env | grep PATH 
+> PATH:.....
+
+```
+
+### Aliases
+
+```bash
+$ alias ls
+> alias ls='ls --color=auto'
+
+$ alias
+```
+
+### Background
+Execute a process in background
+
+```bash
+# See current jobs
+$ jobs
+
+
+# Use & at final to send to background
+$ ping 8.8.8.8 > /tmp/pingfile & 
+
+$ jobs
+> [1] Running pring 8.8.8.8 > /tmp/pingfile &
+```
+
+
