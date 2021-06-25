@@ -26,3 +26,12 @@ $ docker container run -it --name test alpine sh
 # if you want to leave of interactive container use CTRL + P + Q
 ```
 
+
+### Microservices and the real world
+
+```bash
+$ sudo dnf install docker-compose
+$ cd multi-container
+$ docker-compose up -d
+$ docker image ls
+$ docker-compose down
