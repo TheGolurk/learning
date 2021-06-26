@@ -35,3 +35,31 @@ $ cd multi-container
 $ docker-compose up -d
 $ docker image ls
 $ docker-compose down
+
+```
+
+### troubleshouting
+Using fedora 34 you cannot use swarm by an error in --live-restore so you need to update the docker
+file
+
+```bash
+# /etc/sysconfig/docker
+# OLD 
+# Modify these options if you want to change the way the docker daemon runs
+OPTIONS="--selinux-enabled \
+  --log-driver=journald \
+  --live-restore \
+  --default-ulimit nofile=1024:1024 \
+  --init-path /usr/libexec/docker/docker-init \
+  --userland-proxy-path /usr/libexec/docker/docker-proxy \
+"
+
+
+# NEW
+OPTIONS="--selinux-enabled --log-driver=journald"
+
+if [ -z "${DOCKER_CERT_PATH}" ]; then
+    DOCKER_CERT_PATH=/etc/docker
+fi
+```
+
