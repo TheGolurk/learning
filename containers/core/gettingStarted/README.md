@@ -63,3 +63,19 @@ if [ -z "${DOCKER_CERT_PATH}" ]; then
 fi
 ```
 
+
+```bash
+$ docker service create --name web -p 8080:8080 \\n--replicas 3 golurk/gsd:first-ctr
+$ docker service ls
+$ docker container ls
+$ top
+$ docker service ps web
+$ docker service scale web=10
+$ docker container ls
+$ docker container rm 326115391ed6 8c0b3a6c7f07 20a956f13b0a -f
+$ docker container ls
+$ docker service rm web
+$ docker service ls
+$ docker container ls
+```
+
