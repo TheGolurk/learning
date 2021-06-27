@@ -79,3 +79,16 @@ $ docker service ls
 $ docker container ls
 ```
 
+
+```bash
+$ docker image build -t golurk/gsd:swarm-stack .
+$ docker image push golurk/gsd:swarm-stack
+$ docker stack deploy -c docker-compose.yml counter
+$ docker stack ls
+$ docker stack services counter
+$ docker stack ps counter
+$ vim docker-compose.yml
+$ docker stack deploy -c docker-compose.yml counter
+$ docker stack ps counter
+$ docker stack rm counter
+ ```
