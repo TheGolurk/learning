@@ -20,8 +20,16 @@ $ docker run -p 8080:3000 -v /var/www node
 $ docker inspect mycontainer
 > "Mounts": [{
 >  "Name": "a...",
->  "source": "/mnt/..",
->  "destination": "/var/www",
+>  "source": "/mnt/..", # Host location
+>  "destination": "/var/www", # Volume location in container
 >  ....
 > }]
+
+# Customizing the Host Location for a Data Volume
+$ docker run -p 8080:3000 -v $(pwd):/var/www node
+								|
+								v
+							Host Location
+
+
 ```
